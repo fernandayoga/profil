@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerImage from "../assets/img/photo.png";
 import { useState, useEffect, useCallback } from "react";
 
@@ -8,10 +7,10 @@ export const Banner = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const toRotate = ["Web Developer"];
   const [text, setText] = useState("");
-  const [delta, setDelta] = useState(300 - Math.random() * 100); // Perbaikan Math.random
+  const [delta, setDelta] = useState(300 - Math.random() * 100);
   const period = 1000;
 
-  // useCallback untuk mencegah re-render tak perlu
+  // Perbaikan dependency useCallback
   const tick = useCallback(() => {
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
@@ -30,10 +29,10 @@ export const Banner = () => {
       setDelta(period);
     } else if (isDeleting && updatedText === "") {
       setIsDeleting(false);
-      setLoopNum((prevLoopNum) => prevLoopNum + 1); // Menggunakan updater function
+      setLoopNum((prevLoopNum) => prevLoopNum + 1);
       setDelta(500);
     }
-  }, [loopNum, isDeleting, text]); // Dependensi diperbaiki
+  }, [loopNum, isDeleting, text, toRotate, period]);
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -43,7 +42,7 @@ export const Banner = () => {
     return () => {
       clearInterval(ticker);
     };
-  }, [tick, delta]); // Perbaikan dependency array
+  }, [tick, delta]);
 
   return (
     <section className="banner" id="home">
@@ -67,7 +66,6 @@ export const Banner = () => {
               keterampilan dan mengikuti perkembangan teknologi untuk mewujudkan
               tujuan tersebut.
             </p>
-            
           </Col>
           <Col xs={12} md={6} xl={5}>
             <img src={headerImage} alt="banner" />

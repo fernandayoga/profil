@@ -15,8 +15,6 @@ import backEnd from "../assets/img/sertification/BackEnd.png"
 import wmk1 from "../assets/img/sertification/wmk.png"
 import wmk2 from "../assets/img/sertification/wmk2.png"
 import DataScience from "../assets/img/sertification/DataScience.png"
-
-
 import colorSharp from "../assets/img/color-sharp.png"
 
 
@@ -150,7 +148,7 @@ export const Sertification = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-left" src={colorSharp} alt="Image" />
+      <img className="background-image-left" src={colorSharp} alt="Imagee" />
     </section>
   )
 }
